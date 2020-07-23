@@ -29,31 +29,9 @@ module.exports = {
     },
     `gatsby-plugin-postcss`,
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: '@prismicio/gatsby-source-prismic-graphql',
       options: {
         repositoryName: 'shipco',
-        defaultLang: 'en-us',
-        shortenUrlLangs: true,
-        path: '/preview',
-        previews: true,
-        extraPageFields: 'category',
-        // pages: [
-        //   {
-        //     type: 'Post',
-        //     match: '/:lang/post/:uid',
-        //     path: '/post-preview',
-        //     component: require.resolve('./src/templates/post.js'),
-        //     sortBy: 'meta_lastPublicationDate_ASC',
-        //     filter: data => data.node.category === 'news',
-        //   },
-        //   {
-        //     type: 'Article',
-        //     match: '/:lang/article/:uid',
-        //     path: '/article-preview',
-        //     component: require.resolve('./src/templates/article.js'),
-        //     filter: data => data.node._meta.uid.includes('music'),
-        //   }
-        // ],
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
