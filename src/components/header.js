@@ -1,9 +1,8 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa"
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <div className="relative bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6">
       <div className="flex justify-between items-center md:justify-start md:space-x-10 mb-20 py-5 md:px-20">
@@ -25,10 +24,10 @@ const Header = ({ siteTitle }) => (
         <div className="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
           <span className="inline-flex">
             <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2">
-              <FaLinkedinIn size="20" />
+              <FaLinkedinIn size="20" className="text-blue-900" />
             </a>
             <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2">
-              <FaInstagram size="20" />
+              <FaInstagram size="20" className="text-blue-900" />
             </a>
             <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-full text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-4">
               Work with me
