@@ -1,17 +1,32 @@
 import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Hero from "../components/hero"
+import Intro from "../components/intro"
 
-const heroQuery = graphql`
+const indexQuery = graphql`
   query {
     prismic {
-      allHeros {
+      allHomepages {
         edges {
           node {
-            title
+            hero_text
+            intro_section_title
+            intro_section_text
+            intro_button_text
+            intro_button_url {
+              ... on PRISMIC__ExternalLink {
+                url
+              }
+              ... on PRISMIC__FileLink {
+                url
+              }
+              ... on PRISMIC__ImageLink {
+                url
+              }
+            }
           }
         }
       }
@@ -21,19 +36,14 @@ const heroQuery = graphql`
 
 const IndexPage = () => (
   <StaticQuery
-    query={heroQuery}
+    query={indexQuery}
     render={data => {
+      const { hero_text, intro_section_title, intro_section_text, intro_button_text, intro_button_url } = data.prismic.allHomepages.edges[0].node
       return (
         <Layout>
           <SEO title="Home" />
-          <h1 className="text-6xl text-blue-900 font-bold">
-            {data.prismic.allHeros.edges[0].node.title[0].text}
-          </h1>
-          <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-            <Image />
-          </div>
-          <Link to="/page-2/">Go to page 2</Link> <br />
-          <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+          <Hero text={hero_text} />
+          <Intro title={intro_section_title} text={intro_section_text} button={{ text: intro_button_text, url: intro_button_url }} />
         </Layout>
       )
     }}
