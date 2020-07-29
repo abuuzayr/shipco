@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/hero"
 import Intro from "../components/intro"
+import Work from "../components/work"
 
 const indexQuery = graphql`
   query {
@@ -27,6 +28,23 @@ const indexQuery = graphql`
                 url
               }
             }
+            work_section_title
+            work_experience {
+              company
+              duration
+              position
+              url {
+                ... on PRISMIC__ExternalLink {
+                  url
+                }
+                ... on PRISMIC__FileLink {
+                  url
+                }
+                ... on PRISMIC__ImageLink {
+                  url
+                }
+              }
+            }
           }
         }
       }
@@ -38,12 +56,21 @@ const IndexPage = () => (
   <StaticQuery
     query={indexQuery}
     render={data => {
-      const { hero_text, intro_section_title, intro_section_text, intro_button_text, intro_button_url } = data.prismic.allHomepages.edges[0].node
+      const {
+        hero_text, 
+        intro_section_title, 
+        intro_section_text, 
+        intro_button_text, 
+        intro_button_url,
+        work_section_title,
+        work_experience
+      } = data.prismic.allHomepages.edges[0].node
       return (
         <Layout>
           <SEO title="Home" />
           <Hero text={hero_text} />
           <Intro title={intro_section_title} text={intro_section_text} button={{ text: intro_button_text, url: intro_button_url }} />
+          <Work title={work_section_title} nodes={work_experience} />
         </Layout>
       )
     }}
