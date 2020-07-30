@@ -8,6 +8,7 @@ import Intro from "../components/intro"
 import Work from "../components/work"
 import Approach from "../components/approach"
 import Projects from "../components/projects"
+import Profile from "../components/profile"
 
 const indexQuery = graphql`
   query {
@@ -127,6 +128,7 @@ const IndexPage = () => (
           <Work title={work_section_title} nodes={work_experience} />
           <Approach title={approach_section_title} text={approach_section_text} button={{ text: approach_section_link_text, url: approach_section_link_url }} />
           <Projects title={project_section_title} button={{ text: project_button_text, url: project_button_url }} nodes={projects} />
+          <Profile />
         </Layout>
       )
     }}
