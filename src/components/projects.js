@@ -20,13 +20,13 @@ const Projects = ({ title, button, nodes }) => {
     const nodeWidths = nodes.map(n => n.project_tile_width === 'Double' ? 2 : 1)
     let nodeIndex = 0
     return (
-        <div class="flex my-40">
-            <div class="w-1/4">
+        <div class="md:flex my-40">
+            <div class="md:w-1/4 w-full">
                 <p className="font-bold text-blue-900 text-2xl">
                     {title[0].text}
                 </p>
             </div>
-            <div class="w-3/4">
+            <div class="md:w-3/4 w-full">
                 <div class="grid gap-4">
                     {
                         nodes.map((n, index) => {
