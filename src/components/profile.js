@@ -5,54 +5,54 @@ import { FaInstagram, FaLinkedinIn, FaEnvelope } from "react-icons/fa"
 
 const query = graphql`
   query {
-      prismic {
-        allProfiles {
-          edges {
-            node {
-              name
-              position
-              resume {
-                ... on PRISMIC__ExternalLink {
-                  url
-                }
-                ... on PRISMIC__FileLink {
-                  url
-                }
-                ... on PRISMIC__ImageLink {
-                  url
-                }
+    prismic {
+      allProfiles {
+        edges {
+          node {
+            name
+            position
+            resume {
+              ... on PRISMIC__ExternalLink {
+                url
               }
-              resume_button_text
-              linkedin_url {
-                ... on PRISMIC__ExternalLink {
-                  url
-                }
-                ... on PRISMIC__FileLink {
-                  url
-                }
-                ... on PRISMIC__ImageLink {
-                  url
-                }
+              ... on PRISMIC__FileLink {
+                url
               }
-              linkedin_text
-              instagram_url {
-                ... on PRISMIC__ExternalLink {
-                  url
-                }
-                ... on PRISMIC__FileLink {
-                  url
-                }
-                ... on PRISMIC__ImageLink {
-                  url
-                }
+              ... on PRISMIC__ImageLink {
+                url
               }
-              instagram_text
-              email
-              description
             }
+            resume_button_text
+            linkedin_url {
+              ... on PRISMIC__ExternalLink {
+                url
+              }
+              ... on PRISMIC__FileLink {
+                url
+              }
+              ... on PRISMIC__ImageLink {
+                url
+              }
+            }
+            linkedin_text
+            instagram_url {
+              ... on PRISMIC__ExternalLink {
+                url
+              }
+              ... on PRISMIC__FileLink {
+                url
+              }
+              ... on PRISMIC__ImageLink {
+                url
+              }
+            }
+            instagram_text
+            email
+            description
           }
         }
       }
+    }
   }
 `;
 
