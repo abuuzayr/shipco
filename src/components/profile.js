@@ -73,9 +73,9 @@ const Profile = () => (
         description,
       } = data.prismic.allProfiles.edges[0].node
       return (
-        <div class="flex my-40">
-          <div class="w-1/4"></div>
-          <div class="w-3/4">
+        <div class="md:flex my-40">
+          <div class="md:w-1/4 w-0"></div>
+          <div class="md:w-3/4 w-full">
             <div className="mb-8">
               <h2 className="font-bold text-blue-900 text-2xl flex items-center">
                 {name[0].text}
