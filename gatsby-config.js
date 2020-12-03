@@ -38,8 +38,8 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `PT Sans\:400,400i,700`,
-          `DM Serif Display`
+          `Open Sans\:400,400i,700`,
+          `Merriweather\:900`,
         ],
         display: 'swap'
       }
