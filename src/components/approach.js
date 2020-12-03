@@ -8,7 +8,7 @@ const Approach = ({ title, text, button }) => {
     return (
         <div class="md:flex my-40">
             <div class="md:w-1/4 w-full">
-                <p className="font-bold text-blue-900 text-2xl">
+                <p className="font-bold text-blue-900 text-xl">
                     {title[0].text}
                 </p>
             </div>

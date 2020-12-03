@@ -7,7 +7,7 @@ import { IoIosArrowForward } from "react-icons/io"
 const Work = ({ title, nodes }) => (
     <div class="md:flex my-40">
         <div class="md:w-1/4 w-full">
-            <p className="font-bold text-blue-900 text-2xl">
+            <p className="font-bold text-blue-900 text-xl">
                 {title[0].text}
             </p>
         </div>
@@ -17,10 +17,10 @@ const Work = ({ title, nodes }) => (
                     const url = PrismicLink.url(n.url)
                     return (
                         <div className="mb-8">
-                            <Link to={url} className="font-bold text-blue-900 text-2xl flex items-center">
+                            <Link to={url} className="font-bold text-blue-900 text-xl flex items-center">
                                 {n.company[0].text} <IoIosArrowForward className="text-blue-900 ml-2" />
                             </Link>
-                            <p className="font-bold text-blue-900">
+                            <p className="font-bold text-blue-900 mt-6">
                                 {n.position[0].text}
                             </p>
                             <p className="italic">

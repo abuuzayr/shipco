@@ -6,7 +6,7 @@ import { RichText, Link as PrismicLink } from "prismic-reactjs"
 const Intro = ({ title, text, button }) => (
     <div class="md:flex mb-4">
         <div class="md:w-1/4 w-full">
-            <p className="font-bold text-blue-900 text-2xl">
+            <p className="font-bold text-blue-900 text-xl">
                 <RichText render={title} />
             </p>
         </div>

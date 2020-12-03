@@ -6,7 +6,7 @@ import { linkResolver } from "../utils/linkResolver"
 
 const Tile = ({ color, title, desc, url }) => (
     <div className="p-10" style={{ backgroundColor: color, height: 336 }}>
-        <h2 className="text-xl" style={{ fontFamily: 'DM Serif Display' }}>
+        <h2 className="text-xl">
             {title[0].text}
         </h2>
         <p>
@@ -22,7 +22,7 @@ const Projects = ({ title, button, nodes }) => {
     return (
         <div class="md:flex my-40">
             <div class="md:w-1/4 w-full">
-                <p className="font-bold text-blue-900 text-2xl">
+                <p className="font-bold text-blue-900 text-xl">
                     {title[0].text}
                 </p>
             </div>

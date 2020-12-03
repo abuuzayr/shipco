@@ -77,7 +77,7 @@ const Profile = () => (
           <div class="md:w-1/4 w-0"></div>
           <div class="md:w-3/4 w-full">
             <div className="mb-8">
-              <h2 className="font-bold text-blue-900 text-2xl flex items-center">
+              <h2 className="font-bold text-blue-900 text-xl flex items-center">
                 {name[0].text}
               </h2>
               <p className="font-bold my-4">
