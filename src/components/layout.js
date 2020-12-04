@@ -15,12 +15,14 @@ import Header from "./header"
 const Layout = ({ children }) => {
   const query = graphql`
     query {
-      prismic {
-        allFooters {
-          edges {
-            node {
-              footer_left_text
-              footer_right_text
+      allPrismicFooter {
+        nodes {
+          data {
+            footer_left_text {
+              text
+            }
+            footer_right_text {
+              text
             }
           }
         }
@@ -36,7 +38,7 @@ const Layout = ({ children }) => {
     <StaticQuery 
       query={query}
       render={data => {
-        const { footer_left_text, footer_right_text } = data.prismic.allFooters.edges[0].node
+        const { footer_left_text, footer_right_text } = data.allPrismicFooter.nodes[0].data
         return (
           <>
             <Header siteTitle={data.site.siteMetadata.title} />
@@ -48,17 +50,13 @@ const Layout = ({ children }) => {
               }}
             >
               <main>{children}</main>
-              <footer>
-                <div className="flex justify-between">
-                  <p className="text-blue-900">
-                    <RichText render={footer_left_text} />
-                  </p>
-                  <p className="text-gray-500">
-                    <RichText render={footer_right_text} />
-                  </p>
-                </div>
-              </footer>
             </div>
+            <footer className="bg-gray-100 py-8">
+              <div className="flex justify-between max-w-6xl mx-auto">
+                <p className="text-blue-900">{footer_left_text.text}</p>
+                <p className="text-gray-500">{footer_right_text.text || `Last Updated ${new Date().getFullYear()}`}</p>
+              </div>
+            </footer>
           </>
         )}
       }
