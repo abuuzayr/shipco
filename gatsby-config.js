@@ -29,21 +29,35 @@ module.exports = {
     },
     `gatsby-plugin-postcss`,
     {
-      resolve: '@prismicio/gatsby-source-prismic-graphql',
+      resolve: "gatsby-source-prismic",
       options: {
-        repositoryName: 'shipco',
-      }
+        repositoryName: "shipco",
+        linkResolver: ({ node, key, value }) => doc => {
+          return "/"
+        },
+        htmlSerializer: ({ node, key, value }) => (
+          type,
+          element,
+          content,
+          children
+        ) => {
+          // Your HTML serializer
+        },
+        schemas: {
+          homepage: require("./src/schemas/homepage.json"),
+          projects: require("./src/schemas/projects.json"),
+          footer: require("./src/schemas/footer.json"),
+          profile: require("./src/schemas/profile.json"),
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          `Open Sans\:400,400i,700`,
-          `Merriweather\:900`,
-        ],
-        display: 'swap'
-      }
-    }
+        fonts: [`Open Sans\:400,400i,700`, `Merriweather\:900`],
+        display: "swap",
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
