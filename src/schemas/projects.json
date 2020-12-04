@@ -1,0 +1,91 @@
+{
+  "Main": {
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "name"
+      }
+    },
+    "tags": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "tags",
+        "placeholder": "comma delimited tags"
+      }
+    },
+    "thumbnail": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 270,
+          "height": 300
+        },
+        "thumbnails": [],
+        "label": "thumbnail"
+      }
+    },
+    "images": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {
+                "width": 600,
+                "height": 450
+              },
+              "thumbnails": [],
+              "label": "image"
+            }
+          }
+        },
+        "label": "images"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "description"
+      }
+    },
+    "long_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "long description"
+      }
+    },
+    "role": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "role"
+      }
+    },
+    "year": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "year"
+      }
+    },
+    "tile_color": {
+      "type": "Color",
+      "config": {
+        "label": "tile color"
+      }
+    },
+    "tile_width": {
+      "type": "Select",
+      "config": {
+        "options": ["single", "double"],
+        "default_value": "single",
+        "label": "tile width"
+      }
+    }
+  }
+}

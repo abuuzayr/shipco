@@ -1,0 +1,153 @@
+{
+  "Main": {
+    "hero_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Hero text"
+      }
+    },
+    "intro_section_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Intro section title"
+      }
+    },
+    "intro_section_text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Intro section text"
+      }
+    },
+    "intro_button_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Intro button text"
+      }
+    },
+    "intro_button_url": {
+      "type": "Link",
+      "config": {
+        "label": "Intro button URL"
+      }
+    },
+    "work_section_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Work Section Title"
+      }
+    },
+    "work_experience": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "company": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+              "label": "Company"
+            }
+          },
+          "position": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+              "label": "Position"
+            }
+          },
+          "duration": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+              "label": "Duration"
+            }
+          },
+          "long_description": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+              "label": "long description"
+            }
+          },
+          "url": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "URL"
+            }
+          }
+        },
+        "label": "Work Experience"
+      }
+    },
+    "approach_section_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Approach section title"
+      }
+    },
+    "approach_section_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "allowTargetBlank": true,
+        "label": "Approach section text"
+      }
+    },
+    "approach_section_link_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Approach section link text"
+      }
+    },
+    "approach_section_link_url": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Approach section link URL"
+      }
+    },
+    "project_section_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Project Section Title"
+      }
+    },
+    "projects": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "project": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["projects"],
+              "label": "project"
+            }
+          }
+        },
+        "label": "projects"
+      }
+    },
+    "project_button_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Project Button Text"
+      }
+    },
+    "project_button_url": {
+      "type": "Link",
+      "config": {
+        "label": "Project Button URL"
+      }
+    }
+  }
+}
