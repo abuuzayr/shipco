@@ -44,7 +44,7 @@ const indexQuery = graphql`
               text
             }
             long_description {
-              text
+              html
             }
           }
           approach_section_link_text {

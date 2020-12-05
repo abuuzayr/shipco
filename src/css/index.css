@@ -4,3 +4,7 @@ body {
 }
 @tailwind components;
 @tailwind utilities;
+
+.html-block p {
+    margin-top: 20px;
+}
