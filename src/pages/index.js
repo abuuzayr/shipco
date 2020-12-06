@@ -1,5 +1,5 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -112,12 +112,24 @@ const IndexPage = () => (
               url: approach_section_link_url.url,
             }}
           />
-          <Projects
-            tilesMode="dynamic"
-            title={project_section_title.text}
-            btnText={project_button_text.text}
-            btnUrl={project_button_url.url}
-          />
+          <div class="md:flex my-40">
+            <div class="md:w-1/4 w-full">
+              <p className="font-bold text-blue-900 text-xl">
+                {project_section_title.text}
+              </p>
+            </div>
+            <div class="md:w-3/4 w-full">
+              <Projects tilesMode="dynamic" />
+              <p className="mt-10">
+                <Link
+                  to={project_button_url.url}
+                  className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                >
+                  {project_button_text.text}
+                </Link>
+              </p>
+            </div>
+          </div>
           <Profile />
         </Layout>
       )

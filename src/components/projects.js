@@ -54,7 +54,7 @@ const Tile = ({ node, double }) => {
               tags.text &&
               tags.text.split(",").map((tag, index) => (
                 <span
-                  className="uppercase text-xs font-semibold"
+                  className="uppercase text-xs font-semibold tracking-widest"
                   style={{ color: "#102252" }}
                 >
                   {index !== 0 && <BsDot className="inline" />}
@@ -63,7 +63,7 @@ const Tile = ({ node, double }) => {
               ))}
           </div>
           <h2
-            className="text-xl font-bold leading-7"
+            className="text-xl font-bold leading-7 mb-4"
             style={{ color: "#102252" }}
           >
             {name.text}
@@ -87,45 +87,31 @@ const Projects = ({ tilesMode, title, btnText, btnUrl }) => (
         )
         let nodeIndex = 0
         return (
-            <div class="md:flex my-40">
-                <div class="md:w-1/4 w-full">
-                    <p className="font-bold text-blue-900 text-xl">
-                        {title}
-                    </p>
-                </div>
-                <div class="md:w-3/4 w-full">
-                    <div class="grid gap-4">
-                        {
-                            nodes.map((n, index) => {
-                                if (nodeIndex > index) return null
-                                const tileWidth = nodeWidths[index]
-                                const nextTileWidth = nodeWidths[index + 1]
-                                if (nextTileWidth && tileWidth === 1 && nextTileWidth === 1) {
-                                    nodeIndex = index + 2
-                                    return (
-                                        <div className="gap-4 grid md:grid-cols-2 grid-cols-1">
-                                            <Tile node={n.data} />
-                                            <Tile node={nodes[index + 1].data} />
-                                        </div>
-                                    )
-                                } else {
-                                    nodeIndex = index + 1
-                                    return (
-                                        <div className={`md:grid-cols-${tileWidth === 1 ? 2 : 1} grid-cols-1`}>
-                                            <Tile node={n.data} double />
-                                        </div>
-                                    )
-                                }
-                            })
-                        }
-                    </div>
-                    <p className="mt-10">
-                        <Link to={btnUrl} className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white">
-                            {btnText}
-                        </Link>
-                    </p>
-                </div>
-            </div>
+          <div class="grid gap-4">
+              {
+                  nodes.map((n, index) => {
+                      if (nodeIndex > index) return null
+                      const tileWidth = nodeWidths[index]
+                      const nextTileWidth = nodeWidths[index + 1]
+                      if (nextTileWidth && tileWidth === 1 && nextTileWidth === 1) {
+                          nodeIndex = index + 2
+                          return (
+                              <div className="gap-4 grid md:grid-cols-2 grid-cols-1">
+                                  <Tile node={n.data} />
+                                  <Tile node={nodes[index + 1].data} />
+                              </div>
+                          )
+                      } else {
+                          nodeIndex = index + 1
+                          return (
+                              <div className={`md:grid-cols-${tileWidth === 1 ? 2 : 1} grid-cols-1`}>
+                                  <Tile node={n.data} double />
+                              </div>
+                          )
+                      }
+                  })
+              }
+          </div>
         )
     }}
     />
