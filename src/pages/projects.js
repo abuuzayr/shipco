@@ -14,6 +14,7 @@ const ProjectsPage = () => (
       Projects
     </h1>
     <Projects />
+    <div className="mb-20"/>
   </Layout>
 )
 
