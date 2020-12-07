@@ -33,7 +33,7 @@ function SEO({ description, lang, meta, title, overlay }) {
         lang,
       }}
       bodyAttributes={{
-        style: overlay ? "overflow: hidden" : "",
+        class: overlay ? "overflow-hidden" : "",
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
