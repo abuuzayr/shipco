@@ -153,7 +153,7 @@ const IndexPage = () => {
                 </p>
               </div>
               <div class="md:w-3/4 w-full">
-                <Projects tilesMode="dynamic" setOverlay={setOverlay} />
+                <Projects tilesMode="dynamic" overlay={overlay} setOverlay={setOverlay} />
                 <p className="mt-10">
                   <Link
                     to={project_button_url.url}
