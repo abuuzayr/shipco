@@ -19,13 +19,21 @@ const ProjectsPage = () => {
     <Layout>
       <Transition in={overlay} timeout={300}>
         {state => (
-          <div style={{
-            transition: "all 300ms ease-in-out",
-            opacity: 0,
-            display: "none",
-            ...transitionStyles[state]
-          }} className="bg-black h-screen w-screen fixed top-0 left-0">
-            <FiX size={30} color="white" className="absolute top-0 right-0 mr-10 mt-10 cursor-pointer" onClick={() => setOverlay(false)} />
+          <div
+            style={{
+              transition: "all 300ms ease-in-out",
+              opacity: 0,
+              display: "none",
+              ...transitionStyles[state],
+            }}
+            className="bg-black h-screen w-screen fixed top-0 left-0"
+          >
+            <FiX
+              size={30}
+              color="white"
+              className="absolute top-0 right-0 mr-10 mt-10 cursor-pointer"
+              onClick={() => setOverlay(false)}
+            />
           </div>
         )}
       </Transition>
@@ -36,7 +44,7 @@ const ProjectsPage = () => {
       >
         Projects
       </h1>
-      <Projects setOverlay={setOverlay} />
+      <Projects setOverlay={setOverlay} overlay={overlay} />
       <div className="mb-20" />
     </Layout>
   )
