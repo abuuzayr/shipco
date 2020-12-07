@@ -98,7 +98,11 @@ const Tile = ({ node, double, onClick }) => {
 
 const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
   const { tags, name, description, long_description, role, images, year } = node
-  const [likes, setLikes] = useState(window.localStorage.getItem(`${name.text} likes`) || 10)
+  const [likes, setLikes] = useState(
+    (typeof window !== `undefined` &&
+      window.localStorage.getItem(`${name.text} likes`)) ||
+      10
+  )
   return (
     <div className="px-4 md:p-0 md:max-w-2xl mx-auto">
       <div className="flex place-items-center justify-between mb-4">
@@ -129,7 +133,9 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
           type="button"
           onClick={() => {
             setLikes(likes => {
-              window.localStorage.setItem(`${name.text} likes`, likes + 1)
+              if (typeof window !== `undefined`) {
+                window.localStorage.setItem(`${name.text} likes`, likes + 1)
+              }
               return likes + 1
             })
           }}
