@@ -63,12 +63,12 @@ const Work = ({ title, nodes }) => {
                         ...transitionStyles[state],
                       }}
                     >
-                      <p
+                      <div
                         dangerouslySetInnerHTML={{
                           __html: long_description.html,
                         }}
                         className="html-block"
-                      ></p>
+                      ></div>
                       <button
                         className="mt-6 font-bold text-sm"
                         style={{ color: "#D74000" }}

@@ -170,10 +170,10 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
         <p className="font-bold" style={{ color: "#062D5B" }}>
           {description.text}
         </p>
-        <p
+        <div
           dangerouslySetInnerHTML={{ __html: long_description.html }}
           className="html-block"
-        ></p>
+        ></div>
       </div>
       <hr className="my-24" />
       {suggested && suggested.length === 2 && (
