@@ -68,6 +68,20 @@
         "select": "media",
         "label": "Resume"
       }
+    },
+    "git_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Get in touch text"
+      }
+    },
+    "git_subtext": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Get in touch sub-text"
+      }
     }
   }
 }
