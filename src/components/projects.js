@@ -96,7 +96,7 @@ const Tile = ({ node, double, onClick }) => {
     )
 }
 
-const Project = ({ node, suggested, setActive }) => {
+const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
   const { tags, name, description, long_description, role, images, year } = node
   const [likes, setLikes] = useState(window.localStorage.getItem(`${name.text} likes`) || 10)
   return (
@@ -172,7 +172,7 @@ const Project = ({ node, suggested, setActive }) => {
       <hr className="my-24" />
       {suggested && suggested.length === 2 && (
         <>
-          <div className="mb-10">
+          <div className="mb-24">
             <p
               className="text-xl mb-4"
               style={{ fontFamily: "Merriweather", color: "#062D5B" }}
@@ -189,6 +189,25 @@ const Project = ({ node, suggested, setActive }) => {
                 onClick={() => setActive(suggested[1].originalIndex)}
               />
             </div>
+            {projectBtnText && (
+              <div className="mt-10 mb-24">
+                {projectBtnUrl && projectBtnUrl.url ? (
+                  <a
+                    href={projectBtnUrl.url}
+                    className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                  >
+                    {projectBtnText.text}
+                  </a>
+                ) : (
+                  <Link
+                    to="/projects"
+                    className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                  >
+                    {projectBtnText.text}
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
         </>
       )}
@@ -198,7 +217,7 @@ const Project = ({ node, suggested, setActive }) => {
   )
 }
 
-const Projects = ({ tilesMode, overlay, setOverlay }) => {
+const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUrl }) => {
   const [active, setActive] = useState(null)
   const handleOnClick = index => {
     setActive(index)
@@ -226,7 +245,10 @@ const Projects = ({ tilesMode, overlay, setOverlay }) => {
                   nodeIndex = index + 2
                   return (
                     <div className="gap-4 grid md:grid-cols-2 grid-cols-1">
-                      <Tile node={n.data} onClick={() => handleOnClick(index)} />
+                      <Tile
+                        node={n.data}
+                        onClick={() => handleOnClick(index)}
+                      />
                       <Tile
                         node={nodes[index + 1].data}
                         onClick={() => handleOnClick(index + 1)}
@@ -275,11 +297,34 @@ const Projects = ({ tilesMode, overlay, setOverlay }) => {
                           node={node.data}
                           suggested={suggested}
                           setActive={setActive}
+                          projectBtnText={projectBtnText}
+                          projectBtnUrl={projectBtnUrl}
                         />
                       </div>
                     )}
                   </Transition>
-                )})}
+                )
+              })}
+              {
+                projectBtnText &&
+                <p className="mt-10">
+                  {projectBtnUrl && projectBtnUrl.url ? (
+                    <a
+                      href={projectBtnUrl.url}
+                      className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                    >
+                      {projectBtnText.text}
+                    </a>
+                  ) : (
+                    <Link
+                      to="/projects"
+                      className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                    >
+                      {projectBtnText.text}
+                    </Link>
+                  )}
+                </p>
+              }
             </div>
           )
       }}
