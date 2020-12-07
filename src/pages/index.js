@@ -153,15 +153,13 @@ const IndexPage = () => {
                 </p>
               </div>
               <div class="md:w-3/4 w-full">
-                <Projects tilesMode="dynamic" overlay={overlay} setOverlay={setOverlay} />
-                <p className="mt-10">
-                  <Link
-                    to={project_button_url.url}
-                    className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
-                  >
-                    {project_button_text.text}
-                  </Link>
-                </p>
+                <Projects
+                  tilesMode="dynamic"
+                  overlay={overlay}
+                  setOverlay={setOverlay}
+                  projectBtnText={project_button_text}
+                  projectBtnUrl={project_button_url}
+                />
               </div>
             </div>
             <Profile />
