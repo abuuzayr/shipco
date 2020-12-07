@@ -98,6 +98,7 @@ const Tile = ({ node, double, onClick }) => {
 
 const Project = ({ node, suggested, setActive }) => {
   const { tags, name, description, long_description, role, images, year } = node
+  const [likes, setLikes] = useState(window.localStorage.getItem(`${name.text} likes`) || 10)
   return (
     <div className="px-4 md:p-0 md:max-w-2xl mx-auto">
       <div className="flex place-items-center justify-between mb-4">
@@ -125,8 +126,15 @@ const Project = ({ node, suggested, setActive }) => {
         <button
           className="rounded-full px-5 py-3 bg-gray-100 text-sm font-bold hover:bg-gray-50"
           style={{ color: "#062D5B" }}
+          type="button"
+          onClick={() => {
+            setLikes(likes => {
+              window.localStorage.setItem(`${name.text} likes`, likes + 1)
+              return likes + 1
+            })
+          }}
         >
-          <BsHeartFill className="inline mr-2" /> 10 Likes
+          <BsHeartFill className="inline mr-2" /> {likes} Likes
         </button>
       </div>
       <div className="mb-10">
@@ -163,26 +171,27 @@ const Project = ({ node, suggested, setActive }) => {
       </div>
       <hr className="my-24" />
       {suggested && suggested.length === 2 && (
-        <div className="mb-10">
-          <p
-            className="text-xl mb-4"
-            style={{ fontFamily: "Merriweather", color: "#062D5B" }}
-          >
-            You may also like
-          </p>
-          <div className="gap-4 grid md:grid-cols-2 grid-cols-1">
-            <Tile
-              node={suggested[0].data}
-              onClick={() => setActive(suggested[0].originalIndex)}
-            />
-            <Tile
-              node={suggested[1].data}
-              onClick={() => setActive(suggested[1].originalIndex)}
-            />
+        <>
+          <div className="mb-10">
+            <p
+              className="text-xl mb-4"
+              style={{ fontFamily: "Merriweather", color: "#062D5B" }}
+            >
+              You may also like
+            </p>
+            <div className="gap-4 grid md:grid-cols-2 grid-cols-1">
+              <Tile
+                node={suggested[0].data}
+                onClick={() => setActive(suggested[0].originalIndex)}
+              />
+              <Tile
+                node={suggested[1].data}
+                onClick={() => setActive(suggested[1].originalIndex)}
+              />
+            </div>
           </div>
-        </div>
+        </>
       )}
-      <hr className="my-24" />
       <ProfileLite />
       <div className="my-24" />
     </div>
