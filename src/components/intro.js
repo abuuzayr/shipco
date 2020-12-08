@@ -9,7 +9,7 @@ const Intro = ({ title, text, button }) => (
     </div>
     <div class="md:w-3/4 w-full">
       <div class="html-block">
-        <p dangerouslySetInnerHTML={{ __html: text }}/>
+        <div dangerouslySetInnerHTML={{ __html: text }}/>
       </div>
       <div className="mt-16">
         <Link
