@@ -8,3 +8,26 @@ body {
 .html-block p {
     margin-top: 20px;
 }
+
+.tile-height,
+.double-tile-height {
+    height: 336px;
+}
+
+@media screen and (min-width: 769px) {
+    .double-tile-height {
+        height: 250px;
+    }   
+}
+
+.text-blue-900 {
+    color: #062D5B;
+}
+
+.bg-blue-900 {
+    background-color: #062D5B;
+}
+
+.border-blue-900 {
+    border-color: #062D5B;;
+}
