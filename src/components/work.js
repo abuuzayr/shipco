@@ -83,7 +83,6 @@ const Work = ({ title, nodes }) => {
             )
           })}
         </div>
-        <style jsx></style>
       </div>
     )
 }
