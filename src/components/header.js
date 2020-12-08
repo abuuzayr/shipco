@@ -23,7 +23,7 @@ const Header = () => (
             <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2">
               <FaInstagram size="20" className="text-blue-900" />
             </a>
-            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2 border border-transparent text-xs md:text-base md:leading-6 font-medium rounded-full text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-2 md:ml-4">
+            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2 border border-transparent text-xs md:text-base md:leading-6 font-medium rounded-full text-white bg-blue-900 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-2 md:ml-4">
               Work with me
             </a>
           </span>
