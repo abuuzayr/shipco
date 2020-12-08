@@ -50,8 +50,8 @@ const Layout = ({ children }) => {
             >
               <main>{children}</main>
             </div>
-            <footer className="bg-gray-100 py-8">
-              <div className="flex justify-between px-4 md:max-w-6xl mx-auto">
+            <footer className="bg-gray-100 py-4 md:py-8">
+              <div className="md:flex md:justify-between px-4 md:max-w-6xl mx-auto">
                 <p className="text-blue-900">{footer_left_text.text}</p>
                 <p className="text-gray-500">{footer_right_text.text || `Last Updated ${new Date().getFullYear()}`}</p>
               </div>
