@@ -31,7 +31,7 @@ const indexQuery = graphql`
             text
           }
           intro_section_text {
-            text
+            html
           }
           intro_button_text {
             text
@@ -131,7 +131,7 @@ const IndexPage = () => {
             <Hero text={hero_text.text} />
             <Intro
               title={intro_section_title.text}
-              text={intro_section_text.text}
+              text={intro_section_text.html}
               button={{
                 text: intro_button_text.text,
                 url: intro_button_url.url,
