@@ -15,22 +15,15 @@ const Header = () => (
             </svg>
           </Link>
         </div>
-        <div className="-mr-2 -my-2 md:hidden">
-          <button type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-        <div className="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
+        <div className="flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
           <span className="inline-flex">
-            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2">
+            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2">
               <FaLinkedinIn size="20" className="text-blue-900" />
             </a>
-            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2">
+            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2">
               <FaInstagram size="20" className="text-blue-900" />
             </a>
-            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-full text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-4">
+            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2 border border-transparent text-xs md:text-base md:leading-6 font-medium rounded-full text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-2 md:ml-4">
               Work with me
             </a>
           </span>

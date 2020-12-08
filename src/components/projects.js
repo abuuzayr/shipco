@@ -61,10 +61,10 @@ const Tile = ({ node, double, onClick }) => {
     const { description, thumbnail, tags, name, tile_color } = node
     return (
       <div
-        className={`pt-10 px-10 rounded-xl overflow-hidden cursor-pointer hover:shadow-md ${
-          double ? "flex" : ""
+        className={`pt-4 px-4 md:pt-10 md:px-10 rounded-xl overflow-hidden cursor-pointer hover:shadow-md ${
+          double ? "md:flex double-tile-height" : "tile-height"
         }`}
-        style={{ backgroundColor: tile_color, height: double ? 250 : 336 }}
+        style={{ backgroundColor: tile_color }}
         onClick={onClick}
       >
         <div className="flex-1">
@@ -81,13 +81,15 @@ const Tile = ({ node, double, onClick }) => {
                 </span>
               ))}
           </div>
-          <h2
-            className="text-xl font-bold leading-7 mb-4"
-            style={{ color: "#102252" }}
-          >
-            {name.text}
-          </h2>
-          <p>{description.text}</p>
+          <div className="mb-4">
+            <h2
+              className="text-xl font-bold leading-7 mb-4"
+              style={{ color: "#102252" }}
+            >
+              {name.text}
+            </h2>
+            <p>{description.text}</p>
+          </div>
         </div>
         <div className="flex-1">
           <img src={thumbnail.url} className="mx-auto" />
@@ -96,13 +98,34 @@ const Tile = ({ node, double, onClick }) => {
     )
 }
 
-const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
-  const { tags, name, description, long_description, role, images, year } = node
+const LikesButton = ({ name }) => {
   const [likes, setLikes] = useState(
     (typeof window !== `undefined` &&
-      window.localStorage.getItem(`${name.text} likes`)) ||
+      window.localStorage.getItem(`${name} likes`)) ||
       10
   )
+  return (
+    <button
+      className="rounded-full px-2 py-1 md:px-5 md:py-3 bg-gray-100 text-sm font-bold hover:bg-gray-50 whitespace-no-wrap"
+      style={{ color: "#062D5B" }}
+      type="button"
+      onClick={() => {
+        setLikes(likes => {
+          if (typeof window !== `undefined`) {
+            window.localStorage.setItem(`${name} likes`, likes + 1)
+          }
+          return likes + 1
+        })
+      }}
+    >
+      <BsHeartFill className="inline mr-2" /> {likes}{" "}
+      <span className="hidden md:inline">Likes</span>
+    </button>
+  )
+}
+
+const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
+  const { tags, name, description, long_description, role, images, year } = node
   return (
     <div className="px-4 md:p-0 md:max-w-2xl mx-auto">
       <div className="flex place-items-center justify-between mb-4">
@@ -119,6 +142,9 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
                   {tag.trim()}
                 </span>
               ))}
+            <div className="md:hidden float-right">
+              <LikesButton name={name.text} />
+            </div>
           </div>
           <h2
             className="text-xl font-bold leading-7 mb-4"
@@ -127,21 +153,9 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
             {name.text}
           </h2>
         </div>
-        <button
-          className="rounded-full px-5 py-3 bg-gray-100 text-sm font-bold hover:bg-gray-50"
-          style={{ color: "#062D5B" }}
-          type="button"
-          onClick={() => {
-            setLikes(likes => {
-              if (typeof window !== `undefined`) {
-                window.localStorage.setItem(`${name.text} likes`, likes + 1)
-              }
-              return likes + 1
-            })
-          }}
-        >
-          <BsHeartFill className="inline mr-2" /> {likes} Likes
-        </button>
+        <div className="hidden md:block">
+          <LikesButton name={name.text} />
+        </div>
       </div>
       <div className="mb-10">
         <img src={images[0].image.url} className="w-full" />
@@ -297,7 +311,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                           ...defaultStyle,
                           ...transitionStyles[state],
                         }}
-                        className="fixed w-screen bottom-0 bg-white left-0 pt-20 rounded-t-2xl overflow-y-scroll"
+                        className="fixed w-screen bottom-0 bg-white left-0 pt-8 md:pt-20 rounded-t-2xl overflow-y-scroll"
                       >
                         <Project
                           node={node.data}

@@ -20,10 +20,10 @@ const Work = ({ title, nodes }) => {
     const [active, setActive] = useState(0)
     return (
       <div class="md:flex my-40">
-        <div class="md:w-1/4 w-full">
+        <div class="md:w-1/4 w-full mb-10 md:mb-0">
           <p className="font-bold text-blue-900 text-xl">{title}</p>
         </div>
-        <div class="md:w-3/4 w-full pl-8 border-l-2 border-dashed">
+        <div class="md:w-3/4 w-full pl-8 border-l-2 border-dashed ml-2 md:ml-0">
           {nodes.map((n, index) => {
             const { company, position, duration, long_description } = n
             return (

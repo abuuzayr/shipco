@@ -147,7 +147,7 @@ const IndexPage = () => {
               }}
             />
             <div class="md:flex my-40">
-              <div class="md:w-1/4 w-full">
+              <div class="md:w-1/4 w-full mb-10 md:mb-0">
                 <p className="font-bold text-blue-900 text-xl">
                   {project_section_title.text}
                 </p>
