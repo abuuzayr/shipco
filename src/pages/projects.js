@@ -27,6 +27,7 @@ const ProjectsPage = () => {
               ...transitionStyles[state],
             }}
             className="bg-black h-screen w-screen fixed top-0 left-0"
+            onClick={() => setOverlay(false)}
           >
             <FiX
               size={30}
