@@ -6,8 +6,9 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi"
 import { Transition } from "react-transition-group"
 import ProfileLite from "./profile-lite"
 import { Carousel } from "react-responsive-carousel"
-import bodyScroll from "body-scroll-toggle"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+
+const bodyScroll = typeof document !== `undefined` ? require("body-scroll-toggle") : null
 
 const arrowStyles = {
   position: "absolute",
@@ -286,10 +287,12 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
   }
   useEffect(() => {
     setActive(overlay ? active : null)
-    if (overlay) {
-      bodyScroll.disable()
-    } else {
-      bodyScroll.enable()
+    if (bodyScroll) {
+      if (overlay) {
+        bodyScroll.disable()
+      } else {
+        bodyScroll.enable()
+      }
     }
   }, [overlay])
   return (
