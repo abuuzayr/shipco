@@ -6,6 +6,7 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi"
 import { Transition } from "react-transition-group"
 import ProfileLite from "./profile-lite"
 import { Carousel } from "react-responsive-carousel"
+import bodyScroll from "body-scroll-toggle"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const arrowStyles = {
@@ -285,6 +286,11 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
   }
   useEffect(() => {
     setActive(overlay ? active : null)
+    if (overlay) {
+      bodyScroll.disable()
+    } else {
+      bodyScroll.enable()
+    }
   }, [overlay])
   return (
     <StaticQuery
@@ -350,7 +356,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                         ...defaultStyle,
                         ...transitionStyles[state],
                       }
-                      if (typeof window !== `undefined`) {
+                      if (typeof window !== `undefined` && window.innerHeight > 0) {
                         style.height = `calc(${window.innerHeight}px - 70px)`
                       }
                       return (
