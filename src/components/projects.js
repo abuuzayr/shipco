@@ -350,7 +350,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                         ...defaultStyle,
                         ...transitionStyles[state],
                       }
-                      if (window) {
+                      if (typeof window !== `undefined`) {
                         style.height = `calc(${window.innerHeight}px - 70px)`
                       }
                       return (
