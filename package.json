@@ -6,6 +6,7 @@
   "author": "Muhammad Fawwaz <fawwaz@builtforfifty.com>",
   "dependencies": {
     "autoprefixer": "^9",
+    "disable-scroll": "^0.6.0",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
