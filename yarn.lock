@@ -3115,6 +3115,11 @@ body-parser@1.19.0, body-parser@^1.19.0:
     raw-body "2.4.0"
     type-is "~1.6.17"
 
+body-scroll-toggle@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/body-scroll-toggle/-/body-scroll-toggle-0.2.0.tgz#f99c66620c6ecc9e3c25446e320b29fbe36494f7"
+  integrity sha512-iALR5B451WWAW2SQp+/WnKxN/DYzOK5i1OPnMRk9rQo8/xC1YKNDbQY7vKoVuCoDuWwcenk1nAK5g1IU5qRvFg==
+
 bonjour@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bonjour/-/bonjour-3.5.0.tgz#8e890a183d8ee9a2393b3844c691a42bcf7bc9f5"
@@ -4936,11 +4941,6 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
-
-disable-scroll@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/disable-scroll/-/disable-scroll-0.6.0.tgz#ff0ae8d4c9d395e65842583eefb9313d046f462a"
-  integrity sha512-6bTAS16sz+3X7Pib8d5dAO9xo5MvqDZvSlzuhW/2c3NhUvbPNqnsV3JttvnqgNCDEgWUgNWJYM392iUmLETDxA==
 
 dns-equal@^1.0.0:
   version "1.0.0"
