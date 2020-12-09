@@ -31,7 +31,7 @@ const ProjectsPage = () => {
             <FiX
               size={30}
               color="white"
-              className="absolute top-0 right-0 mr-10 mt-10 cursor-pointer"
+              className="absolute top-0 right-0 mr-5 mt-5 cursor-pointer"
               onClick={() => setOverlay(false)}
             />
           </div>
