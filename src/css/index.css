@@ -35,3 +35,31 @@ a.bg-blue-900:hover {
 .border-blue-900 {
     border-color: #062D5B;;
 }
+
+.carousel .slider-wrapper {
+    border-radius: 1rem;
+}
+
+.thumbs-wrapper {
+    text-align: center;
+}
+
+.carousel .thumbs-wrapper li.thumb {
+    border-radius: 0.5rem;
+    border-width: 2px;
+    padding: 0;
+}
+
+.thumbs-wrapper li.thumb.selected {
+    border-radius: 0.5rem;
+    border-color: #D74000;
+}
+
+.carousel-root > .carousel.carousel-slider {
+    overflow: visible;
+    background: white;
+}
+
+.carousel-root > .carousel.carousel-slider:hover .carousel-arrow {
+    opacity: 1;
+}
