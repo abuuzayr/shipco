@@ -60,7 +60,7 @@ const Profile = () => (
         description,
       } = data.allPrismicProfile.nodes[0].data
       return (
-        <div class="md:flex my-40">
+        <div class="md:flex my-40" id="profile">
           <div class="md:w-1/4 w-0"></div>
           <div class="md:w-3/4 w-full">
             <div className="mb-8">
