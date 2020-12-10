@@ -4,20 +4,31 @@ import { Link } from "gatsby"
 
 const Approach = ({ title, text, button }) => {
     return (
-      <div class="md:flex my-40">
+      <div class="md:flex my-40" id="approach">
         <div class="md:w-1/4 w-full mb-10 md:mb-0">
           <p className="font-bold text-blue-900 text-xl">{title}</p>
         </div>
         <div class="md:w-3/4 w-full">
           <p>{text}</p>
           <p className="mt-4">
-            <Link
-              to={button.url}
-              className="font-bold text-sm"
-              style={{ color: "#D74000" }}
-            >
-              {button.text}
-            </Link>
+            {button.url && button.url.includes("http") ? (
+              <a
+                href={button.url}
+                className="font-bold text-sm"
+                style={{ color: "#D74000" }}
+                rel="noopener noreferrer"
+              >
+                {button.text}
+              </a>
+            ) : (
+              <Link
+                to={button.url}
+                className="font-bold text-sm"
+                style={{ color: "#D74000" }}
+              >
+                {button.text}
+              </Link>
+            )}
           </p>
         </div>
       </div>
