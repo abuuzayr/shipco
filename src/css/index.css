@@ -63,3 +63,7 @@ a.bg-blue-900:hover {
 .carousel-root > .carousel.carousel-slider:hover .carousel-arrow {
     opacity: 1;
 }
+
+html {
+    scroll-behavior: smooth;
+}
