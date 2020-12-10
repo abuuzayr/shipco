@@ -71,7 +71,7 @@ const Profile = () => (
               <p>{description.text}</p>
             </div>
             {linkedin_url && linkedin_text && (
-              <p className="mb-2" style={{ color: "#D74000" }}>
+              <p className="mb-2" style={{ color: "#F27400" }}>
                 <a
                   href={linkedin_url.url}
                   className="flex items-center text-orange-600"
@@ -82,7 +82,7 @@ const Profile = () => (
               </p>
             )}
             {instagram_url && instagram_text && (
-              <p className="mb-2" style={{ color: "#D74000" }}>
+              <p className="mb-2" style={{ color: "#F27400" }}>
                 <a
                   href={instagram_url.url}
                   className="flex items-center text-orange-600"
@@ -93,7 +93,7 @@ const Profile = () => (
               </p>
             )}
             {email && (
-              <p className="mb-2" style={{ color: "#D74000" }}>
+              <p className="mb-2" style={{ color: "#F27400" }}>
                 <a
                   href={`mailto:${email.text}`}
                   className="flex items-center text-orange-600"

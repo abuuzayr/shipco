@@ -52,7 +52,7 @@ a.bg-blue-900:hover {
 
 .thumbs-wrapper li.thumb.selected {
     border-radius: 0.5rem;
-    border-color: #D74000;
+    border-color: #F27400;
 }
 
 .carousel-root > .carousel.carousel-slider {

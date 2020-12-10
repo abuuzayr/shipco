@@ -31,6 +31,21 @@ const Layout = ({ children }) => {
           title
         }
       }
+      allPrismicProfile {
+        nodes {
+          data {
+            linkedin_url {
+              url
+            }
+            instagram_url {
+              url
+            }
+            email {
+              text
+            }
+          }
+        }
+      }
     }
   `;
   return (
@@ -38,9 +53,14 @@ const Layout = ({ children }) => {
       query={query}
       render={data => {
         const { footer_left_text, footer_right_text } = data.allPrismicFooter.nodes[0].data
+        const { linkedin_url, instagram_url, email } = data.allPrismicProfile.nodes[0].data
         return (
           <>
-            <Header siteTitle={data.site.siteMetadata.title} />
+            <Header siteTitle={data.site.siteMetadata.title} social={{
+              ig: linkedin_url.url,
+              li: instagram_url.url,
+              email: email.text
+            }} />
             <div
               style={{
                 margin: `0 auto`,

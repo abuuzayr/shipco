@@ -15,7 +15,7 @@ const Approach = ({ title, text, button }) => {
               <a
                 href={button.url}
                 className="font-bold text-sm"
-                style={{ color: "#D74000" }}
+                style={{ color: "#F27400" }}
                 rel="noopener noreferrer"
               >
                 {button.text}
@@ -24,7 +24,7 @@ const Approach = ({ title, text, button }) => {
               <Link
                 to={button.url}
                 className="font-bold text-sm"
-                style={{ color: "#D74000" }}
+                style={{ color: "#F27400" }}
               >
                 {button.text}
               </Link>

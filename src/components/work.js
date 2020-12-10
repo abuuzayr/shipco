@@ -71,7 +71,7 @@ const Work = ({ title, nodes }) => {
                       ></div>
                       <button
                         className="mt-6 font-bold text-sm"
-                        style={{ color: "#D74000" }}
+                        style={{ color: "#F27400" }}
                         onClick={() => setActive(null)}
                       >
                         Hide
