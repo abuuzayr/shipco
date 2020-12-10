@@ -353,7 +353,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                   }
                 }
                 return (
-                  <Transition in={active === index} timeout={500}>
+                  <Transition in={active === index} timeout={500} mountOnEnter>
                     {state => { 
                       const style = {
                         ...defaultStyle,
