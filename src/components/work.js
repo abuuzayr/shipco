@@ -50,7 +50,9 @@ const Work = ({ title, nodes }) => {
                 >
                   {company.text}{" "}
                   {active !== index && (
-                    <IoIosArrowForward className="text-blue-900 ml-2" />
+                    <div style={{ width: 28, height: 20 }}>
+                      <IoIosArrowForward className="text-blue-900 ml-2" />
+                    </div>
                   )}
                 </div>
                 <p className="font-bold text-blue-900 mt-6">{position.text}</p>
