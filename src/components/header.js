@@ -33,6 +33,8 @@ const Header = ({ social }) => (
               <a
                 href={social.li}
                 className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaLinkedinIn size="20" className="text-blue-900" />
               </a>
@@ -41,6 +43,8 @@ const Header = ({ social }) => (
               <a
                 href={social.ig}
                 className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaInstagram size="20" className="text-blue-900" />
               </a>
