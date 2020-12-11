@@ -15,7 +15,7 @@ const Intro = ({ title, text, button }) => (
         {button.url && button.url.includes("http") ? (
           <a
             href={button.url}
-            className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+            className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-2 md:py-4 hover:bg-blue-900 hover:text-white text-sm"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -24,7 +24,7 @@ const Intro = ({ title, text, button }) => (
         ) : (
           <Link
             to={button.url || "#projects"}
-            className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+            className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-2 md:py-4 hover:bg-blue-900 hover:text-white text-sm"
           >
             {button.text}
           </Link>

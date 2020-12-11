@@ -32,6 +32,10 @@ a.bg-blue-900:hover {
     background-color: #093569;
 }
 
+.hover\:bg-blue-900:hover {
+    background-color: #062D5B;
+}
+
 .border-blue-900 {
     border-color: #062D5B;;
 }
@@ -62,4 +66,8 @@ a.bg-blue-900:hover {
 
 .carousel-root > .carousel.carousel-slider:hover .carousel-arrow {
     opacity: 1;
+}
+
+.project-modal::-webkit-scrollbar{
+    display: none;
 }

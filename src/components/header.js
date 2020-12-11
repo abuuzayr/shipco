@@ -48,7 +48,7 @@ const Header = ({ social }) => (
             {social && social.email && (
               <a
                 href={`mailto:${social.email}`}
-                className="whitespace-no-wrap inline-flex items-center justify-center px-2 md:px-4 py-1 md:py-2 border border-transparent text-xs md:text-base md:leading-6 font-medium rounded-full text-white bg-blue-900 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-2 md:ml-4"
+                className="whitespace-no-wrap inline-flex items-center justify-center px-6 py-2 md:py-4 border border-transparent rounded-full text-white bg-blue-900 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-2 md:ml-4 text-sm font-bold"
               >
                 Work with me
               </a>

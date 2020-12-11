@@ -107,7 +107,7 @@ const Profile = () => (
               <p className="mt-10">
                 <a
                   href={resume.url}
-                  className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                  className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-2 md:py-4 hover:bg-blue-900 hover:text-white text-sm"
                   target="_blank"
                 >
                   {resume_button_text.text}
