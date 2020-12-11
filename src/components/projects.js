@@ -116,17 +116,17 @@ const Tile = ({ node, double, onClick }) => {
 
 const LikesButton = ({ name }) => {
   const [likes, setLikes] = useState(
-    (typeof window !== `undefined` &&
-      window.localStorage.getItem(`${name} likes`)) ||
-      10
+    (typeof window !== `undefined` ?
+      parseInt(window.localStorage.getItem(`${name} likes`)) : 0)
   )
   return (
     <button
       className="rounded-full px-5 py-3 bg-gray-100 text-sm font-bold hover:bg-gray-50 whitespace-no-wrap"
-      style={{ color: "#062D5B" }}
+      style={{ color: likes ? "#FF004C" : "#062D5B" }}
       type="button"
       onClick={() => {
         setLikes(likes => {
+          if (!likes) likes = 10
           if (typeof window !== `undefined`) {
             window.localStorage.setItem(`${name} likes`, likes + 1)
           }
@@ -134,7 +134,7 @@ const LikesButton = ({ name }) => {
         })
       }}
     >
-      <BsHeartFill className="inline mr-2" /> {likes}{" "}Likes
+      <BsHeartFill className="inline mr-2" color={likes ? "#FF004C" : "#062D5B"} /> {likes ? likes : 10}{" "}Likes
     </button>
   )
 }
@@ -209,7 +209,7 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
       </div>
       <div className="md:flex md:place-items-start">
         <div className="md:w-4/6">
-          <div className="md:w-11/12">
+          <div className="md:w-11/12 mb-4 md:mb-0">
             <p className="font-bold" style={{ color: "#062D5B" }}>
               {description.text}
             </p>
@@ -256,14 +256,14 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
                 {projectBtnUrl && projectBtnUrl.url ? (
                   <a
                     href={projectBtnUrl.url}
-                    className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                    className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-2 md:py-4 hover:bg-blue-900 hover:text-white text-sm"
                   >
                     {projectBtnText.text}
                   </a>
                 ) : (
                   <Link
                     to="/projects"
-                    className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                    className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-2 md:py-4 hover:bg-blue-900 hover:text-white text-sm"
                   >
                     {projectBtnText.text}
                   </Link>
@@ -365,7 +365,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                       return (
                         <div
                           style={style}
-                          className="fixed w-screen bottom-0 bg-white left-0 pt-8 md:pt-20 rounded-t-2xl overflow-y-scroll"
+                          className="fixed w-screen bottom-0 bg-white left-0 pt-8 md:pt-20 rounded-t-2xl overflow-y-scroll project-modal"
                         >
                           <Project
                             node={node.data}
@@ -386,14 +386,14 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                   {projectBtnUrl && projectBtnUrl.url ? (
                     <a
                       href={projectBtnUrl.url}
-                      className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                      className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-2 md:py-4 hover:bg-blue-900 hover:text-white text-sm"
                     >
                       {projectBtnText.text}
                     </a>
                   ) : (
                     <Link
                       to="/projects"
-                      className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white"
+                      className="font-bold rounded-full border border-blue-900 text-blue-900 px-6 py-2 md:py-4 hover:bg-blue-900 hover:text-white text-sm"
                     >
                       {projectBtnText.text}
                     </Link>
