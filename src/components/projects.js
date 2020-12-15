@@ -8,8 +8,6 @@ import ProfileLite from "./profile-lite"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-const bodyScroll = typeof document !== `undefined` ? require("body-scroll-toggle") : null
-
 const arrowStyles = {
   position: "absolute",
   zIndex: 2,
@@ -287,13 +285,6 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
   }
   useEffect(() => {
     setActive(overlay ? active : null)
-    if (bodyScroll) {
-      if (overlay) {
-        bodyScroll.disable()
-      } else {
-        bodyScroll.enable()
-      }
-    }
   }, [overlay])
   return (
     <StaticQuery
