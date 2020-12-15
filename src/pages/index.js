@@ -1,7 +1,5 @@
 import React, { useState } from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
-import { Transition } from "react-transition-group"
-import { FiX } from "react-icons/fi"
+import { StaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
