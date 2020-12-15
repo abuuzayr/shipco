@@ -12,13 +12,6 @@ import Approach from "../components/approach"
 import Projects from "../components/projects"
 import Profile from "../components/profile"
 
-const transitionStyles = {
-  entering: { opacity: 0, display: "block" },
-  entered: { opacity: 0.75, display: "block" },
-  exiting: { display: "block"},
-  exited: {},
-}
-
 const indexQuery = graphql`
   query {
     allPrismicHomepage {
@@ -106,28 +99,7 @@ const IndexPage = () => {
           project_button_url
         } = data.allPrismicHomepage.nodes[0].data
         return (
-          <Layout>
-            <Transition in={overlay} timeout={300}>
-              {state => (
-                <div
-                  style={{
-                    transition: "all 300ms ease-in-out",
-                    opacity: 0,
-                    display: "none",
-                    ...transitionStyles[state],
-                  }}
-                  className="bg-black h-screen w-screen fixed top-0 left-0"
-                  onClick={() => setOverlay(false)}
-                >
-                  <FiX
-                    size={30}
-                    color="white"
-                    className="absolute top-0 right-0 mr-5 mt-5 cursor-pointer"
-                    onClick={() => setOverlay(false)}
-                  />
-                </div>
-              )}
-            </Transition>
+          <Layout overlay={overlay} setOverlay={setOverlay}>
             <SEO title="Home" overlay={overlay} />
             <Hero text={hero_text.text} />
             <Intro
