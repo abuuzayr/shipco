@@ -1,32 +1,44 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { Link } from "gatsby"
 import { IoSend, IoClose } from 'react-icons/io5'
 
 const Chat = ({ setOverlay }) => {
-    const [stages, setStages] = useState([
-        {
-            stage: 'name',
-            prompt: () => 'Hi there, you can start this fake chat by sharing your name. 😀'
-        }, 
-        {
-            stage: 'email',
-            validator: str => new RegExp(/^\S+@\S+\.\S+$/).test(str),
-            validatorError: 'Hmm, that email seems invalid. Would you like to enter it again?',
-            prompt: name => `${name} sounds like a great name! What is your email? I would be able to get in touch with you for real.`
-        }, 
-        {
-            stage: 'message',
-            prompt: () => 'Noted on the email. Would you like me to take note of the purpose of this message before we get in touch?'
-        }, 
-        {
-            stage: 'end',
-            prompt: () => 'Thank you for your message. As mentioned, this is a fake chat 😜. Give me some time, I will get back to you as soon as I can.'
-        },
-    ])
     const [stage, setStage] = useState(0)
     const [messages, setMessages] = useState([])
     const messageContainer = useRef(null)
     const messageInput = useRef(null)
     const [message, setMessage] = useState('')
+    const [stages, setStages] = useState([
+        {
+            stage: 'name',
+            prompt: () => 'Hi there, you can start this fake chat by sharing your name. 😀'
+        },
+        {
+            stage: 'email',
+            validator: str => new RegExp(/^\S+@\S+\.\S+$/).test(str),
+            validatorError: 'Hmm, that email seems invalid. Would you like to enter it again?',
+            prompt: name => `${name} sounds like a great name! What is your email? I would be able to get in touch with you for real.`
+        },
+        {
+            stage: 'message',
+            prompt: () => 'Noted on the email. Would you like me to take note of the purpose of this message before we get in touch?'
+        },
+        {
+            stage: 'end',
+            prompt: () => {
+                setTimeout(() => {
+                    setMessages(oldMessages => [
+                        ...oldMessages,
+                        {
+                            from: 'bot',
+                            body: <span>In the meantime, you can keep checking your inbox or check out more of my work <Link to="/projects" className="font-bold">here</Link>!</span>
+                        }
+                    ])
+                }, 3000)
+                return 'Thank you for your message. As mentioned, this is a fake chat 😜. Give me some time, I will get back to you as soon as I can.'
+            }
+        },
+    ])
     const handleKeyUp = e => {
         if (e.currentTarget.value && e.key && e.key === 'Enter') {
             sendMessage(message)
@@ -49,7 +61,7 @@ const Chat = ({ setOverlay }) => {
         if (valid) {
             setStage(prevStage => prevStage < stages.length - 1 ? prevStage + 1 : prevStage)
             setStages(oldStages => {
-                const obj = [ ...oldStages ]
+                const obj = [...oldStages]
                 obj[stage]['value'] = message
                 return obj
             })
@@ -65,6 +77,9 @@ const Chat = ({ setOverlay }) => {
                 ])
             }, 1000)
         }
+    }
+    const postMessage = () => {
+        // Send email
     }
     useEffect(() => {
         if (messageContainer && messageContainer.current) {
@@ -83,12 +98,13 @@ const Chat = ({ setOverlay }) => {
                 ])
             }, 1000)
         }
+        if (stage === stages.length - 1) postMessage()
     }, [stage])
     useEffect(() => {
-        if (messageInput && messageInput.current) {
+        if (messageInput && messageInput.current && stage < stages.length - 1) {
             messageInput.current.focus()
         }
-    }, [messageInput])
+    }, [messageInput, stage])
     return (
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
