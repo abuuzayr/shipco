@@ -7,6 +7,7 @@ const Chat = ({ setOverlay }) => {
     const [messages, setMessages] = useState([])
     const messageContainer = useRef(null)
     const messageInput = useRef(null)
+    const formSubmit = useRef(null)
     const [message, setMessage] = useState('')
     const [stages, setStages] = useState([
         {
@@ -78,8 +79,16 @@ const Chat = ({ setOverlay }) => {
             }, 1000)
         }
     }
-    const postMessage = () => {
+    const postMessage = async () => {
         // Send email
+        if (formSubmit && formSubmit.current) {
+            // Send email
+            const data = new FormData(formSubmit.current)
+            const response = await fetch('https://getform.io/f/de3d1629-3602-413e-b0f8-185cbd2f3cdb', {
+                method: 'POST',
+                body: data,
+            })
+        }
     }
     useEffect(() => {
         if (messageContainer && messageContainer.current) {
@@ -153,6 +162,12 @@ const Chat = ({ setOverlay }) => {
                     }
                 </div>
             </div>
+            <form action="https://getform.io/f/de3d1629-3602-413e-b0f8-185cbd2f3cdb" method="POST" className="hidden" ref={formSubmit}>
+                <input type="text" name="name" value={stages[0]['value']} />
+                <input type="email" name="email" value={stages[1]['value']} />
+                <input type="text" name="message" value={stages[2]['value']} />
+                <input type="submit" value="Send Email" />
+            </form>
         </div>
     )
 }
