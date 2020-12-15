@@ -3,7 +3,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa"
 
-const Header = ({ social }) => (
+const Header = ({ social, setChatActive }) => (
   <div className="relative bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6">
       <div className="flex justify-between items-center md:justify-start md:space-x-10 mb-20 py-5 md:px-20">
@@ -49,14 +49,12 @@ const Header = ({ social }) => (
                 <FaInstagram size="20" className="text-blue-900" />
               </a>
             )}
-            {social && social.email && (
-              <a
-                href={`mailto:${social.email}`}
-                className="whitespace-no-wrap inline-flex items-center justify-center px-6 py-2 md:py-4 border border-transparent rounded-full text-white bg-blue-900 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-2 md:ml-4 text-sm font-bold"
-              >
-                Work with me
-              </a>
-            )}
+            <button
+              onClick={setChatActive}
+              className="whitespace-no-wrap inline-flex items-center justify-center px-6 py-2 md:py-4 border border-transparent rounded-full text-white bg-blue-900 focus:outline-none focus:border-blue focus:shadow-outline-blue active:bg-blue-900 transition ease-in-out duration-150 ml-2 md:ml-4 text-sm font-bold"
+            >
+              Work with me
+            </button>
           </span>
         </div>
       </div>
