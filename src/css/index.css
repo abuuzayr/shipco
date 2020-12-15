@@ -28,7 +28,7 @@ body {
     background-color: #062D5B;
 }
 
-a.bg-blue-900:hover {
+button.bg-blue-900:hover {
     background-color: #093569;
 }
 
