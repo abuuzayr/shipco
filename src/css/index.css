@@ -68,6 +68,7 @@ a.bg-blue-900:hover {
     opacity: 1;
 }
 
-.project-modal::-webkit-scrollbar{
+.project-modal::-webkit-scrollbar,
+.chat-inner-container::-webkit-scrollbar {
     display: none;
 }
