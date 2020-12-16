@@ -8,6 +8,7 @@ const Chat = ({ setOverlay }) => {
     const messageContainer = useRef(null)
     const messageInput = useRef(null)
     const formSubmit = useRef(null)
+    const chatContainer = useRef(null)
     const [message, setMessage] = useState('')
     const [stages, setStages] = useState([
         {
@@ -78,6 +79,9 @@ const Chat = ({ setOverlay }) => {
                 ])
             }, 1000)
         }
+        if (messageInput && messageInput.current && stage < stages.length - 1) {
+            messageInput.current.focus()
+        }
     }
     const postMessage = async () => {
         // Send email
@@ -110,25 +114,27 @@ const Chat = ({ setOverlay }) => {
         if (stage === stages.length - 1) postMessage()
     }, [stage])
     useEffect(() => {
-        if (messageInput && messageInput.current && stage < stages.length - 1) {
-            messageInput.current.focus()
+        if (chatContainer && chatContainer.current && chatContainer.current.clientWidth > 680) {
+            if (messageInput && messageInput.current && stage < stages.length - 1) {
+                messageInput.current.focus()
+            }
         }
-    }, [messageInput, stage])
+    }, [chatContainer, messageInput])
     return (
-        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="flex items-center justify-center min-h-screen px-4 text-center sm:block sm:p-0" ref={chatContainer}>
             <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline" style={{ height: 480 }}>
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform sm:my-8 sm:align-middle sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline" style={{ height: 570, maxWidth: 608 }}>
                 <div className="shadow-2xl p-1 rounded-full float-right mt-4 mr-4 cursor-pointer border box-border" style={{
                     borderColor: "#F6F6F6",
                     boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.1)",
                 }} onClick={() => setOverlay(false)}>
                     <IoClose size={10} />
                 </div>
-                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div className="bg-white px-4 pt-5 pb-4 sm:p-20 sm:pb-4">
                     <div className="font-bold text-2xl pb-4" style={{ color: "#062D5B" }}>Work with me</div>
                     <div>You can always email or contact me on my social platforms. Since you are already here, just send a message below!</div>
                 </div>
-                <div ref={messageContainer} className="px-6 overflow-y-scroll chat-inner-container" style={{ maxHeight: 259 }}>
+                <div ref={messageContainer} className="px-4 sm:px-20 overflow-y-scroll chat-inner-container">
                     {messages.map(message => {
                         const commonClasses = "rounded-t-2xl p-6 max-w-xs mb-2 clear-both"
                         return (

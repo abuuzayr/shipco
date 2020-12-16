@@ -72,3 +72,13 @@ button.bg-blue-900:hover {
 .chat-inner-container::-webkit-scrollbar {
     display: none;
 }
+
+.chat-inner-container {
+    max-height: calc(100% - 241px);
+}
+
+@media screen and (min-width: 640px) {
+    .chat-inner-container {
+        max-height: calc(100% - 277px);
+    }
+}
