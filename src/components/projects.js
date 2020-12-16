@@ -124,16 +124,16 @@ const LikeButton = ({ name }) => {
       type="button"
       onClick={() => {
         setLike(like => {
-          if (!like) {
-            if (typeof window !== `undefined`) {
-              window.localStorage.setItem(`${name} like`, 1)
-            }
-            return 1
-          } else {
+          if (like) {
             if (typeof window !== `undefined`) {
               window.localStorage.removeItem(`${name} like`)
             }
             return 0
+          } else {
+            if (typeof window !== `undefined`) {
+              window.localStorage.setItem(`${name} like`, 1)
+            }
+            return 1
           }
         })
       }}
