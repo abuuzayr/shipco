@@ -112,27 +112,33 @@ const Tile = ({ node, double, onClick }) => {
     )
 }
 
-const LikesButton = ({ name }) => {
-  const [likes, setLikes] = useState(
+const LikeButton = ({ name }) => {
+  const [like, setLike] = useState(
     (typeof window !== `undefined` ?
-      parseInt(window.localStorage.getItem(`${name} likes`)) : 0)
+      parseInt(window.localStorage.getItem(`${name} like`)) : 0)
   )
   return (
     <button
-      className="rounded-full px-5 py-3 bg-gray-100 text-sm font-bold hover:bg-gray-50 whitespace-no-wrap"
-      style={{ color: likes ? "#FF004C" : "#062D5B" }}
+      className="rounded-full px-5 py-3 bg-gray-100 text-sm font-bold hover:bg-gray-50 whitespace-no-wrap outline-none focus:outline-none"
+      style={{ color: like ? "#FF004C" : "#062D5B" }}
       type="button"
       onClick={() => {
-        setLikes(likes => {
-          if (!likes) likes = 10
-          if (typeof window !== `undefined`) {
-            window.localStorage.setItem(`${name} likes`, likes + 1)
+        setLike(like => {
+          if (!like) {
+            if (typeof window !== `undefined`) {
+              window.localStorage.setItem(`${name} like`, 1)
+            }
+            return 1
+          } else {
+            if (typeof window !== `undefined`) {
+              window.localStorage.removeItem(`${name} like`)
+            }
+            return 0
           }
-          return likes + 1
         })
       }}
     >
-      <BsHeartFill className="inline mr-2" color={likes ? "#FF004C" : "#062D5B"} /> {likes ? likes : 10}{" "}Likes
+      <BsHeartFill className="inline mr-2" color={like ? "#FF004C" : "#062D5B"} /> Like
     </button>
   )
 }
@@ -163,7 +169,7 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
             {name.text}
           </h2>
         </div>
-        <LikesButton name={name.text} />
+        <LikeButton name={name.text} />
       </div>
       <div className="mb-10">
         <Carousel
