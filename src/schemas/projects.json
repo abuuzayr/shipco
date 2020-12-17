@@ -1,5 +1,11 @@
 {
   "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "id"
+      }
+    },
     "name": {
       "type": "StructuredText",
       "config": {
@@ -20,7 +26,7 @@
       "config": {
         "constraint": {
           "width": 270,
-          "height": 300
+          "height": 240
         },
         "thumbnails": [],
         "label": "thumbnail"
@@ -82,7 +88,10 @@
     "tile_width": {
       "type": "Select",
       "config": {
-        "options": ["single", "double"],
+        "options": [
+          "single",
+          "double"
+        ],
         "default_value": "single",
         "label": "tile width"
       }
