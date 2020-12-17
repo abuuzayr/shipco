@@ -119,22 +119,16 @@ const LikeButton = ({ name }) => {
   )
   return (
     <button
-      className="rounded-full px-5 py-3 bg-gray-100 text-sm font-bold hover:bg-gray-50 whitespace-no-wrap outline-none focus:outline-none"
+      className={`rounded-full px-5 py-3 bg-gray-100 text-sm font-bold whitespace-no-wrap outline-none focus:outline-none ${like ? "cursor-default" : "hover:bg-gray-50"}`}
       style={{ color: like ? "#FF004C" : "#062D5B" }}
       type="button"
       onClick={() => {
-        setLike(like => {
-          if (like) {
-            if (typeof window !== `undefined`) {
-              window.localStorage.removeItem(`${name} like`)
-            }
-            return 0
-          } else {
-            if (typeof window !== `undefined`) {
-              window.localStorage.setItem(`${name} like`, 1)
-            }
-            return 1
+        if (like) return
+        setLike(() => {
+          if (typeof window !== `undefined`) {
+            window.localStorage.setItem(`${name} like`, 1)
           }
+          return 1
         })
       }}
     >
