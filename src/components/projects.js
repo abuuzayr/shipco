@@ -36,6 +36,7 @@ const query = graphql`
   query {
     allPrismicProjects {
       nodes {
+        uid
         data {
           description {
             text
@@ -112,13 +113,14 @@ const Tile = ({ node, double, onClick }) => {
     )
 }
 
-const LikeButton = ({ name }) => {
+const LikeButton = ({ uid }) => {
   const [like, setLike] = useState(
     (typeof window !== `undefined` ?
-      parseInt(window.localStorage.getItem(`${name} like`)) : 0)
+      parseInt(window.localStorage.getItem(`${uid} like`)) : 0)
   )
   return (
     <button
+      id={uid}
       className={`rounded-full px-5 py-3 bg-gray-100 text-sm font-bold whitespace-no-wrap outline-none focus:outline-none ${like ? "cursor-default" : "hover:bg-gray-50"}`}
       style={{ color: like ? "#FF004C" : "#062D5B" }}
       type="button"
@@ -126,7 +128,7 @@ const LikeButton = ({ name }) => {
         if (like) return
         setLike(() => {
           if (typeof window !== `undefined`) {
-            window.localStorage.setItem(`${name} like`, 1)
+            window.localStorage.setItem(`${uid} like`, 1)
           }
           return 1
         })
@@ -137,7 +139,7 @@ const LikeButton = ({ name }) => {
   )
 }
 
-const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
+const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
   const { tags, name, description, long_description, role, images, year } = node
   return (
     <div className="px-6 md:p-0 md:max-w-2xl mx-auto">
@@ -163,7 +165,7 @@ const Project = ({ node, suggested, setActive, projectBtnText, projectBtnUrl }) 
             {name.text}
           </h2>
         </div>
-        <LikeButton name={name.text} />
+        <LikeButton uid={uid} />
       </div>
       <div className="mb-10">
         <Carousel
@@ -359,6 +361,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                           className="fixed w-screen bottom-0 bg-white left-0 pt-8 md:pt-20 rounded-t-2xl overflow-y-scroll project-modal"
                         >
                           <Project
+                            uid={node.uid}
                             node={node.data}
                             suggested={suggested}
                             setActive={setActive}
