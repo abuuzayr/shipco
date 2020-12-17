@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Ng Shi Peng's Portfolio`,
+    description: `Portfolio and recent work for Ng Shi Peng`,
+    author: `@shipengng`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,7 +24,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/sp.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-postcss`,
@@ -34,14 +34,6 @@ module.exports = {
         repositoryName: "shipco",
         linkResolver: ({ node, key, value }) => doc => {
           return "/"
-        },
-        htmlSerializer: ({ node, key, value }) => (
-          type,
-          element,
-          content,
-          children
-        ) => {
-          // Your HTML serializer
         },
         schemas: {
           homepage: require("./src/schemas/homepage.json"),
@@ -56,6 +48,14 @@ module.exports = {
       options: {
         fonts: [`Open Sans\:400,400i,600,700`, `Merriweather\:900`],
         display: "swap",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "UA-111111111-1",
+        head: false,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
