@@ -79,6 +79,6 @@ button.bg-blue-900:hover {
 
 @media screen and (min-width: 640px) {
     .chat-inner-container {
-        max-height: calc(100% - 277px);
+        max-height: calc(100% - 301px);
     }
 }
