@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from "prop-types"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { BsDot, BsHeartFill } from "react-icons/bs"
@@ -141,6 +141,12 @@ const LikeButton = ({ uid }) => {
 
 const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
   const { tags, name, description, long_description, role, images, year } = node
+  const carouselChild = useRef()
+  useEffect(() => {
+    if (carouselChild && carouselChild.current) {
+      carouselChild.current.closest('.carousel-root').focus()
+    }
+  }, [carouselChild])
   return (
     <div className="px-6 md:p-0 md:max-w-2xl mx-auto">
       <div className="md:flex md:place-items-center justify-between mb-4">
@@ -173,6 +179,8 @@ const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUr
           showStatus={false}
           infiniteLoop={true}
           thumbWidth={100}
+          useKeyboardArrows={true}
+          swipeable={true}
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
               <button
@@ -201,7 +209,7 @@ const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUr
           }
         >
           {images.map(({ image }) => (
-            <div className="bg-white">
+            <div className="bg-white" ref={carouselChild}>
               <img src={image.url.split("?auto=")[0]} />
             </div>
           ))}
