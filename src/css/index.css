@@ -74,11 +74,15 @@ button.bg-blue-900:hover {
 }
 
 .chat-inner-container {
-    max-height: calc(100% - 241px);
+    height: 306px;
+}
+
+.chat-wrapper {
+    top: calc(50% - 546px / 2);
 }
 
 @media screen and (min-width: 640px) {
     .chat-inner-container {
-        max-height: calc(100% - 301px);
+        height: 246px;
     }
 }

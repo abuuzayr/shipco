@@ -23,10 +23,13 @@ const Layout = ({ children, overlay, setOverlay }) => {
     default: {
       transition: "all 300ms ease-in-out",
       opacity: 0,
+      display: "none",
+      height: 546,
+      maxWidth: 608
     },
     transition: {
       entering: { opacity: 0 },
-      entered: { opacity: 1 },
+      entered: { opacity: 1, display: "block" },
       exiting: { opacity: 0 },
       exited: { opacity: 0 },
     }
@@ -122,28 +125,26 @@ const Layout = ({ children, overlay, setOverlay }) => {
                       display: "none",
                       ...overlayStyles.transition[state],
                     }}
-                    className="bg-black h-screen w-screen fixed top-0 left-0"
+                    className="bg-black h-screen w-screen fixed inset-0 z-10"
                     onClick={() => setOverlay(false)}
                   >
-                    {!chatActive &&
                     <FiX
                       size={30}
                       color="white"
                       className="absolute top-0 right-0 mr-5 mt-5 cursor-pointer"
                       onClick={() => setOverlay(false)}
                     />
-                    }
                   </div>
                 )}
               </Transition>
               <main>{children}</main>
-              <Transition in={chatActive} timeout={300} mountOnEnter unmountOnExit>
+              <Transition in={chatActive} timeout={300}>
                 {state => (
                   <div style={{
                     ...chatStyles.default,
                     ...chatStyles.transition[state]
                   }}
-                    className="fixed z-10 inset-0 overflow-y-auto">
+                    className="chat-wrapper fixed z-10 inset-0 px-2 mx-auto">
                       <Chat setOverlay={setOverlay} />
                   </div>
                 )}
