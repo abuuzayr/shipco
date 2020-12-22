@@ -358,7 +358,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                       return (
                         <div
                           style={style}
-                          className="fixed w-screen bottom-0 bg-white left-0 pt-8 md:pt-20 rounded-t-2xl overflow-y-scroll project-modal"
+                          className="fixed w-screen bottom-0 bg-white left-0 pt-8 md:pt-20 rounded-t-2xl overflow-y-scroll project-modal z-20"
                         >
                           <Project
                             uid={node.uid}
