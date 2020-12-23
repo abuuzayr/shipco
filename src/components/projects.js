@@ -38,6 +38,7 @@ const query = graphql`
       nodes {
         uid
         data {
+          index
           description {
             text
           }
@@ -300,7 +301,9 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
     <StaticQuery
       query={query}
       render={data => {
-          const nodes = data.allPrismicProjects.nodes
+          let nodes = data.allPrismicProjects.nodes
+          nodes = nodes.filter(n => n.data.index)
+          nodes = nodes.sort((a, b) => a.data.index === b.data.index ? 0 : a.data.index > b.data.index ? 1 : -1)
           const nodeWidths = nodes.map(n =>
             tilesMode === "dynamic" && n.tile_width === "double" ? 2 : 1
           )

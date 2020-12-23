@@ -6,6 +6,13 @@
         "label": "id"
       }
     },
+    "index": {
+      "type": "Number",
+      "config": {
+        "label": "Index on home page",
+        "placeholder": "will not appear on home page if left empty"
+      }
+    },
     "name": {
       "type": "StructuredText",
       "config": {
