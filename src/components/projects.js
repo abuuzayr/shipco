@@ -288,7 +288,7 @@ const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUr
   )
 }
 
-const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUrl }) => {
+const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUrl, onlyIndexed }) => {
   const [active, setActive] = useState(null)
   const handleOnClick = index => {
     setActive(index)
@@ -302,8 +302,13 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
       query={query}
       render={data => {
           let nodes = data.allPrismicProjects.nodes
-          nodes = nodes.filter(n => n.data.index)
-          nodes = nodes.sort((a, b) => a.data.index === b.data.index ? 0 : a.data.index > b.data.index ? 1 : -1)
+          if (onlyIndexed) nodes = nodes.filter(n => n.data.index)
+          nodes = nodes.sort((a, b) => {
+            if (a.data.index === b.data.index) return 0 
+            if (!a.data.index) return 1
+            if (!b.data.index) return -1
+            return a.data.index > b.data.index ? 1 : -1
+          })
           const nodeWidths = nodes.map(n =>
             tilesMode === "dynamic" && n.tile_width === "double" ? 2 : 1
           )
