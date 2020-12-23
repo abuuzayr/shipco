@@ -130,6 +130,7 @@ const IndexPage = () => {
                   setOverlay={setOverlay}
                   projectBtnText={project_button_text}
                   projectBtnUrl={project_button_url}
+                  onlyIndexed
                 />
               </div>
             </div>
