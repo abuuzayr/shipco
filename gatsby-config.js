@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Ng Shi Peng's Portfolio`,
-    description: `Portfolio and recent work for Ng Shi Peng`,
+    title: `Ng Shi Peng's UI/UX Designer Portfolio`,
+    description: `User Interface & Experience Designer with over 8 years of experience based in Singapore`,
     author: `@shipengng`,
   },
   plugins: [
