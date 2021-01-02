@@ -131,6 +131,7 @@ const IndexPage = () => {
                   projectBtnText={project_button_text}
                   projectBtnUrl={project_button_url}
                   onlyIndexed
+                  cols={2}
                 />
               </div>
             </div>
