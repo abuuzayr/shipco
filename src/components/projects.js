@@ -26,8 +26,8 @@ const defaultStyle = {
 }
 
 const transitionStyles = {
-  entering: { height: "calc(100vh - 70px)", marginBottom: 0 },
-  entered: { height: "calc(100vh - 70px)", marginBottom: 0 },
+  entering: { height: "calc(100vh - 40px)", marginBottom: 0 },
+  entered: { height: "calc(100vh - 40px)", marginBottom: 0 },
   exiting: { height: 0, marginBottom: -999 },
   exited: { height: 0 },
 }
@@ -373,7 +373,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                         ...transitionStyles[state],
                       }
                       if (typeof window !== `undefined` && window.innerHeight > 0) {
-                        style.height = `calc(${window.innerHeight}px - 70px)`
+                        style.height = `calc(${window.innerHeight}px - 40px)`
                       }
                       return (
                         <div
