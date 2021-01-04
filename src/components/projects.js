@@ -309,9 +309,8 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
             if (!b.data.index) return -1
             return a.data.index > b.data.index ? 1 : -1
           })
-          const nodeWidths = nodes.map((n, i) =>
-            tilesMode === "dynamic" && (n.tile_width === "double" || i === nodes.length - 1) ? cols : 1
-          )
+        const nodeWidths = nodes.map((n, i) => (tilesMode === "dynamic" && n.data.tile_width === "double") ? cols : 1
+        )
           let nodeIndex = 0
           return (
             <div className="grid gap-4">
