@@ -129,9 +129,9 @@ const Layout = ({ children, overlay, setOverlay }) => {
                     onClick={() => setOverlay(false)}
                   >
                     <FiX
-                      size={30}
+                      size={24}
                       color="white"
-                      className="absolute top-0 right-0 mr-5 mt-5 cursor-pointer"
+                      className="absolute top-0 right-0 mr-2 mt-2 cursor-pointer"
                       onClick={() => setOverlay(false)}
                     />
                   </div>
