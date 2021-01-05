@@ -115,6 +115,8 @@ const Profile = () => (
               </p>
             )}
           </div>
+          <div className="hidden md:grid-cols-3" />
+          <div className="hidden md:grid-cols-2" />
         </div>
       )
     }}
