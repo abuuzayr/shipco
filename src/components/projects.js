@@ -250,7 +250,7 @@ const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUr
             >
               You may also like
             </p>
-            <div className={`gap-4 grid md:grid-cols-${cols} grid-cols-1`}>
+            <div className={`gap-6 grid md:grid-cols-${cols} grid-cols-1`}>
               <Tile
                 node={suggested[0].data}
                 onClick={() => setActive(suggested[0].originalIndex)}
@@ -313,7 +313,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
         )
           let nodeIndex = 0
           return (
-            <div className="grid gap-4">
+            <div className="grid gap-6">
               {nodes.map((n, index) => {
                 if (nodeIndex > index) return null
                 const tileWidth = nodeWidths[index]
@@ -321,7 +321,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                 if (nextTileWidth && tileWidth === 1 && nextTileWidth === 1) {
                   nodeIndex = index + cols
                   return (
-                    <div className={`gap-4 grid md:grid-cols-${cols} grid-cols-1`}>
+                    <div className={`gap-6 grid md:grid-cols-${cols} grid-cols-1`}>
                       {
                         [...Array(cols).keys()].map(i => {
                           if (nodes[index + i]) {
