@@ -105,8 +105,8 @@ const Layout = ({ children, overlay, setOverlay }) => {
         return (
           <>
             <Header siteTitle={data.site.siteMetadata.title} social={{
-              ig: linkedin_url.url,
-              li: instagram_url.url,
+              ig: instagram_url.url,
+              li: linkedin_url.url,
               email: email.text
             }} setChatActive={handleOnClick} />
             <div
@@ -129,9 +129,9 @@ const Layout = ({ children, overlay, setOverlay }) => {
                     onClick={() => setOverlay(false)}
                   >
                     <FiX
-                      size={30}
+                      size={24}
                       color="white"
-                      className="absolute top-0 right-0 mr-5 mt-5 cursor-pointer"
+                      className="absolute top-0 right-0 mr-2 mt-2 cursor-pointer"
                       onClick={() => setOverlay(false)}
                     />
                   </div>

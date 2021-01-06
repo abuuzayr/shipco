@@ -15,7 +15,7 @@ const ProjectsPage = () => {
       >
         Projects
       </h1>
-      <Projects setOverlay={setOverlay} overlay={overlay} />
+      <Projects setOverlay={setOverlay} overlay={overlay} cols={3} />
       <div className="mb-20" />
     </Layout>
   )

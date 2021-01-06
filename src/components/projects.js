@@ -26,8 +26,8 @@ const defaultStyle = {
 }
 
 const transitionStyles = {
-  entering: { height: "calc(100vh - 70px)", marginBottom: 0 },
-  entered: { height: "calc(100vh - 70px)", marginBottom: 0 },
+  entering: { height: "calc(100vh - 40px)", marginBottom: 0 },
+  entered: { height: "calc(100vh - 40px)", marginBottom: 0 },
   exiting: { height: 0, marginBottom: -999 },
   exited: { height: 0 },
 }
@@ -140,7 +140,7 @@ const LikeButton = ({ uid }) => {
   )
 }
 
-const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUrl }) => {
+const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUrl, cols }) => {
   const { tags, name, description, long_description, role, images, year } = node
   const carouselChild = useRef()
   useEffect(() => {
@@ -250,7 +250,7 @@ const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUr
             >
               You may also like
             </p>
-            <div className="gap-6 grid md:grid-cols-2 grid-cols-1">
+            <div className={`gap-6 grid md:grid-cols-${cols} grid-cols-1`}>
               <Tile
                 node={suggested[0].data}
                 onClick={() => setActive(suggested[0].originalIndex)}
@@ -288,7 +288,7 @@ const Project = ({ uid, node, suggested, setActive, projectBtnText, projectBtnUr
   )
 }
 
-const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUrl, onlyIndexed }) => {
+const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUrl, onlyIndexed, cols }) => {
   const [active, setActive] = useState(null)
   const handleOnClick = index => {
     setActive(index)
@@ -309,28 +309,31 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
             if (!b.data.index) return -1
             return a.data.index > b.data.index ? 1 : -1
           })
-          const nodeWidths = nodes.map(n =>
-            tilesMode === "dynamic" && n.tile_width === "double" ? 2 : 1
-          )
+        const nodeWidths = nodes.map((n, i) => (tilesMode === "dynamic" && n.data.tile_width === "double") ? cols : 1
+        )
           let nodeIndex = 0
           return (
-            <div class="grid gap-6">
+            <div className="grid gap-6">
               {nodes.map((n, index) => {
                 if (nodeIndex > index) return null
                 const tileWidth = nodeWidths[index]
-                const nextTileWidth = nodeWidths[index + 1]
+                const nextTileWidth = nodeWidths[index + cols - 2]
                 if (nextTileWidth && tileWidth === 1 && nextTileWidth === 1) {
-                  nodeIndex = index + 2
+                  nodeIndex = index + cols
                   return (
-                    <div className="gap-6 grid md:grid-cols-2 grid-cols-1">
-                      <Tile
-                        node={n.data}
-                        onClick={() => handleOnClick(index)}
-                      />
-                      <Tile
-                        node={nodes[index + 1].data}
-                        onClick={() => handleOnClick(index + 1)}
-                      />
+                    <div className={`gap-6 grid md:grid-cols-${cols} grid-cols-1`}>
+                      {
+                        [...Array(cols).keys()].map(i => {
+                          if (nodes[index + i]) {
+                            return (
+                              <Tile
+                                node={nodes[index + i].data}
+                                onClick={() => handleOnClick(index)}
+                              />
+                            )
+                          }
+                        })
+                      }
                     </div>
                   )
                 } else {
@@ -338,7 +341,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                   return (
                     <div
                       className={`md:grid-cols-${
-                        tileWidth === 1 ? 2 : 1
+                        tileWidth === 1 ? cols : 1
                       } grid-cols-1`}
                     >
                       <Tile
@@ -369,7 +372,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                         ...transitionStyles[state],
                       }
                       if (typeof window !== `undefined` && window.innerHeight > 0) {
-                        style.height = `calc(${window.innerHeight}px - 70px)`
+                        style.height = `calc(${window.innerHeight}px - 40px)`
                       }
                       return (
                         <div
@@ -383,6 +386,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                             setActive={setActive}
                             projectBtnText={projectBtnText}
                             projectBtnUrl={projectBtnUrl}
+                            cols={cols}
                           />
                         </div>
                       )
