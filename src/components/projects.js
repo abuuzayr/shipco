@@ -328,7 +328,7 @@ const Projects = ({ tilesMode, overlay, setOverlay, projectBtnText, projectBtnUr
                             return (
                               <Tile
                                 node={nodes[index + i].data}
-                                onClick={() => handleOnClick(index)}
+                                onClick={() => handleOnClick(index + i)}
                               />
                             )
                           }
